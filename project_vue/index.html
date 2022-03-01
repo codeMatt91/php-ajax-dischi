@@ -19,13 +19,10 @@
             />
          </div>
          <div id="search">
-            <!-- <label for="search-genre">Choose genre:</label> -->
-            <!-- <select v-model="selected" @change="onChange" id="search-genre">
-            <option value="">ALL</option>
-            <option v-for="(genre, index) in genres" :key="index" :value="genre">
-               {{ genre }}
-            </option>
-            </select> -->
+            <label for="search-genre">Choose genre:</label>
+            <input type="text" id="search-genre" v-model='selected' placeholder="Cerca qui">
+            <button type="button">INVIA</button>
+            </select>
          </div>
       </header>
       <main>

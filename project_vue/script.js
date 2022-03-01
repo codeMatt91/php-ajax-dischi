@@ -8,13 +8,10 @@ const app = new Vue({
       movies: [],
    },
    methods: {
-      getApi() {
-         axios.get('http://localhost:8888/php-ajax-dischi/api/index.php').then(res => {
-            this.movies = res.data;
-         })
-      }
    },
    mounted() {
-      this.getApi;
+      axios.get('http://localhost:8888/php-ajax-dischi/api/').then(res => {
+            this.movies = res.data;
+      })
    }
 });

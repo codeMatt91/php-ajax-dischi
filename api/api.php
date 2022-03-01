@@ -44,7 +44,3 @@ $database = [
       'genre' => 'Rock'
    ]
 ];
-
-header('Content-Type: apllication/json');
-
-echo json_encode($database);

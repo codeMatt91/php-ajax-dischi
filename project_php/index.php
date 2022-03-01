@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-
+include __DIR__ . '/../api/api.php';
 
 ?>
 
@@ -13,6 +13,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="style.css">
    <title>Php-dischi</title>
 </head>
 
@@ -33,17 +34,19 @@
    </header>
    <main>
       <div class="container">
-         <div class="albums py-5 d-flex justify-content-center">
-            <div v-for="(album, index) in getGenreAlbum" :key="index" class="card">
-               <div class="img-album">
-                  <img :src="album.poster" class="img-fluid" :alt="album.genre" />
+         <div class="albums py-5 d-flex flex-wrap justify-content-center">
+            <?php foreach ($database as $item) : ?>
+               <div class="card">
+                  <div class="img-album">
+                     <img src='<?php echo $item['poster'] ?>' class="img-fluid" alt='<?php echo $item['title'] ?>' />
+                  </div>
+                  <div class="card-body">
+                     <h4 class="card-title"><?php echo $item['title'] ?></h4>
+                     <div class="author text-muted h6"><?php echo $item['author'] ?></div>
+                     <div class="year text-muted h6"><?php echo $item['year'] ?></div>
+                  </div>
                </div>
-               <div class="card-body">
-                  <h4 class="card-title">{{ album.title }}</h4>
-                  <div class="author text-muted h6">{{ album.author }}</div>
-                  <div class="year text-muted h6">{{ album.year }}</div>
-               </div>
-            </div>
+            <?php endforeach; ?>
          </div>
       </div>
    </main>

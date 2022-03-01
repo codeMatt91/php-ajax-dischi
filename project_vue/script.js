@@ -9,10 +9,13 @@ const app = new Vue({
       selected:'',
    },
    methods: {
-   },
-   mounted() {
-      axios.get('http://localhost:8888/php-ajax-dischi/api/').then(res => {
+      search() {
+         axios.get(`http://localhost:8888/php-ajax-dischi/api/?selected=${this.selected}`).then(res => {
             this.movies = res.data;
       })
+      }
+   },
+   mounted() {
+      this.search();
    }
 });

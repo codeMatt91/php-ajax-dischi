@@ -1,5 +1,7 @@
 <?php
 
+$selected = $_GET['selected'] ?? '';
+
 $database = [
    [
       'title' => 'New Jersey',
@@ -45,6 +47,16 @@ $database = [
    ]
 ];
 
+$results = $database;
+
+if (!empty($selected)) {
+   $results = [];
+   foreach ($database as $movie) {
+      $title = strtolower($movie['title']);
+      if (strpos($title, strtolower($selected)) !== false) $results[] = $movie;
+   }
+}
+
 header('Content-Type: application/json');
 
-echo json_encode($database);
+echo json_encode($results);
